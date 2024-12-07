@@ -6,20 +6,26 @@ import openai
 openai.api_key = st.secrets["openai"]["api_key"]
 
 # Function to call OpenAI API for comment generation
-def generate_narrative_comment(user_comment):
-    prompt = f"Assume you are an experienced educator. Please take the following comment: '{user_comment}' and create an honest comment that highlights the student's strengths and where they need to improve on."
+openai.api_key = st.secrets["openai"]["api_key"]
 
-    # Call OpenAI GPT-3 to generate a response
-    response = openai.Completion.create(
-        #model="text-davinci-003",  # You can choose another model if preferred
-        model="gpt-3.5-turbo-16k",
-        prompt=prompt,
+# Function to call OpenAI API for comment generation
+def generate_narrative_comment(user_comment):
+    # Construct the messages for the chat model
+    messages = [
+        {"role": "system", "content": "You are an experienced medical educator of 3rd year medical students."},
+        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and create an honest comment that highlights the student's strengths and where they need to improve on."}
+    ]
+
+    # Call OpenAI's GPT-3.5-turbo model (Chat API)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-16k",  # Using the turbo model with 16k token capacity
+        messages=messages,
         max_tokens=150,  # Adjust the number of tokens based on your requirements
         temperature=0.7  # Adjust temperature for creativity
     )
 
     # Get the generated response from OpenAI API
-    return response.choices[0].text.strip()
+    return response['choices'][0]['message']['content'].strip()
 
 # Streamlit App Layout
 st.title("Narrative Comment Tool")
