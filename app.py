@@ -13,14 +13,14 @@ def generate_narrative_comment(user_comment):
     # Construct the messages for the chat model
     messages = [
         {"role": "system", "content": "You are an experienced medical educator of 3rd year medical students."},
-        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and write a concise, honest narrative comment will go in the student's evaluation that highlights the student's strengths and where they need to improve on."}
-    ]
+        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and write a concise, honest narrative comment for the student's evaluation. The comment should be specific and focus on concrete examples of the student's strengths, behaviors, and actions. Highlight areas where the student excels, as well as specific areas where they need to improve. Provide actionable suggestions for improvement, particularly around their performance in clinical settings, teamwork, communication, or professional behavior. Avoid generalities and be as specific as possible in your feedback."}]
+    
 
     # Call OpenAI's GPT-3.5-turbo model (Chat API)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo-16k",  # Using the turbo model with 16k token capacity
         messages=messages,
-        max_tokens=150,  # Adjust the number of tokens based on your requirements
+        max_tokens=500,  # Adjust the number of tokens based on your requirements
         temperature=0.7  # Adjust temperature for creativity
     )
 
