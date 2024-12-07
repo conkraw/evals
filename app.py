@@ -21,7 +21,7 @@ def generate_narrative_comment(user_comment):
         model="gpt-3.5-turbo-16k",  # Using the turbo model with 16k token capacity
         messages=messages,
         max_tokens=500,  # Adjust the number of tokens based on your requirements
-        temperature=0.7  # Adjust temperature for creativity
+        temperature=0.3  # Adjust temperature for creativity
     )
 
     # Get the generated response from OpenAI API
