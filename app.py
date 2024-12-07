@@ -13,7 +13,7 @@ def generate_narrative_comment(user_comment):
     # Construct the messages for the chat model
     messages = [
         {"role": "system", "content": "You are an experienced medical educator of 3rd year medical students."},
-        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and create an honest narrative comment will go in the student's evaluation that highlights the student's strengths and where they need to improve on."}
+        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and write a concise, honest narrative comment will go in the student's evaluation that highlights the student's strengths and where they need to improve on."}
     ]
 
     # Call OpenAI's GPT-3.5-turbo model (Chat API)
