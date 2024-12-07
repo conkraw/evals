@@ -12,7 +12,7 @@ def generate_narrative_comment(user_comment):
     # Call OpenAI GPT-3 to generate a response
     response = openai.Completion.create(
         #model="text-davinci-003",  # You can choose another model if preferred
-        model="gpt-3.5-turbo-16k"
+        model="gpt-3.5-turbo-16k",
         prompt=prompt,
         max_tokens=150,  # Adjust the number of tokens based on your requirements
         temperature=0.7  # Adjust temperature for creativity
