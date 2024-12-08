@@ -9,7 +9,7 @@ def generate_narrative_comment(user_comment, pronoun):
     # Construct the messages for the chat model
     messages = [
         {"role": "system", "content": "You are an experienced educator providing constructive feedback for medical students."},
-        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and write a concise, honest narrative comment for the student's evaluation without using the letter e. The comment should be specific and focus on concrete examples of the student's strengths, behaviors, and actions. Highlight areas where the student excels, as well as specific areas where they need to improve. Provide actionable suggestions for improvement, particularly around their performance in clinical settings, teamwork, communication, or professional behavior. Use the pronoun '{pronoun}' for the student. Avoid generalities and be as specific as possible in your feedback."}
+        {"role": "user", "content": f"Please take the following comment: '{user_comment}' and write a concise, honest narrative comment for the student's evaluation. The comment should be specific and focus on concrete examples of the student's strengths, behaviors, and actions. Highlight areas where the student excels, as well as specific areas where they need to improve. Provide actionable suggestions for improvement, particularly around their performance in clinical settings, teamwork, communication, or professional behavior. Use the pronoun '{pronoun}' for the student. Avoid generalities and be as specific as possible in your feedback. Do not use the letter 'e' when writing the comment."}
     ]
 
     # Call OpenAI's GPT-3.5-turbo model (Chat API)
