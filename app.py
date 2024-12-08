@@ -26,8 +26,31 @@ def generate_narrative_comment(user_comment, pronoun):
 # Streamlit App Layout
 st.title("Narrative Comment Tool")
 
+st.write("""
+Welcome to the **Narrative Comment Generator**! This tool will assist you in creating thoughtful, constructive feedback for medical students based on a few sentences you provide. Please follow these steps:
+
+### 1. Input Your Comment
+In the text box below, type a few sentences describing the student's performance, behavior, or actions. Focus on **specific examples**. What did the student do well, and where can they improve?
+
+### 2. Specify the Pronoun
+Choose the pronoun that best reflects the student (e.g., "he," "she," or "they"). This will ensure that the generated comment is personalized to your input.
+
+### 3. Guidelines for Your Comment
+The generated comment will serve as a **guide** to help you structure your feedback. However, please review and adjust the generated text to fit your own observations and the context of the evaluation.
+
+### 4. Feedback Focus
+The tool will help generate a comment that:
+- Highlights the student's **strengths** and areas where they excel.
+- Provides **specific examples** of behaviors or actions that demonstrate these strengths.
+- Suggests areas for **improvement**, particularly in clinical performance, teamwork, communication, or professionalism.
+
+**Important Note**: Please do not use the generated comment verbatim in your official evaluation. It is just a starting point, and you should personalize it with your own insights and context.
+""")
+
+
 # Input section for user comment
-user_comment = st.text_area("Enter your comment:", height=150)
+st.subheader("Provide the student's performance or behavior description:")
+user_comment = st.text_area("Describe the student's performance here...", height=150)
 
 # Select pronoun for the student
 pronoun = st.selectbox("Select student's pronoun:", options=["he", "she", "they"])
