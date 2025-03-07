@@ -1,2 +1,2 @@
 openai==0.28.0
-from docx import Document
+python-docx==0.8.11
