@@ -86,6 +86,16 @@ user_comment = st.text_area("Describe the student's performance here...", height
 # Select pronoun for the student
 pronoun = st.selectbox("Select student's pronoun:", options=["he", "she", "they"])
 
+import io
+from docx import Document
+import streamlit as st
+
+# Let the user enter a student's name (or any identifier) to be used in the filename
+student_name = st.text_input("Enter Student's Name (optional):")
+
+# Your existing user comment input
+user_comment = st.text_area("Enter comment:")
+
 # Generate narrative comment when the user presses a button
 if st.button("Generate Narrative Comment"):
     if user_comment.strip():
@@ -93,6 +103,27 @@ if st.button("Generate Narrative Comment"):
             generated_comment = generate_narrative_comment(user_comment, pronoun)
             st.subheader("Generated Narrative Comment")
             st.write(generated_comment)
+            
+            # Create a Word document using python-docx
+            doc = Document()
+            doc.add_paragraph(generated_comment)
+            
+            # Save the document to an in-memory bytes buffer
+            buffer = io.BytesIO()
+            doc.save(buffer)
+            buffer.seek(0)
+            
+            # Create a filename based on the student's name if provided
+            filename = f"{student_name}_narrative_comment.docx" if student_name.strip() else "narrative_comment.docx"
+            
+            # Provide a download button for the Word document
+            st.download_button(
+                label="Download Comment as Word File",
+                data=buffer,
+                file_name=filename,
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
     else:
         st.error("Please enter a comment before generating!")
+
 
