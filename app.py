@@ -94,7 +94,7 @@ import streamlit as st
 student_name = st.text_input("Enter Student's Name (optional):")
 
 # Your existing user comment input
-user_comment = st.text_area("Enter comment:")
+#user_comment = st.text_area("Enter comment:")
 
 # Generate narrative comment when the user presses a button
 if st.button("Generate Narrative Comment"):
